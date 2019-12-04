@@ -16,7 +16,8 @@ module.exports = {
                 username: config.onid,
                 menuitems: [
                     { location: '/catalog', page: 'View Catalog' },
-                    { location: '/suppliers', page: 'List Suppliers' },
+                    // { location: '/suppliers', page: 'List Suppliers' },
+                    { location: '/suppliers', page: 'List Stocks' },
                     { location: '/suppliers/add', page: 'Add Supplier' },
                     { location: '/parts', page: 'List Parts' },
                     { location: '/parts/add', page: 'Add Part' }

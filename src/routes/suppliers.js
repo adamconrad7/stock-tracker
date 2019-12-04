@@ -7,12 +7,12 @@ const router = express.Router();
  * Route for listing part suppliers.
  */
 router.get('/suppliers', (req, res, next) => {
-    req.db.query('SELECT * FROM Suppliers', (err, results) => {
+    req.db.query('SELECT * FROM Stock', (err, results) => {
         if (err) return next(err);
         res.render(
             'suppliers',
             createViewContext({
-                pageName: 'List Suppliers',
+                pageName: 'List Stocks',
                 rows: results
             })
         );
