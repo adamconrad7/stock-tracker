@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\assets",
+    "\\scripts",
+    "\\src",
+    "\\src\\routes",
+    "\\views",
+    "\\views\\layouts",
+    "\\views\\partials"
+  ],
+  "SelectedNode": "\\assets\\verify-input.js",
+  "PreviewInSolutionExplorer": false
+}

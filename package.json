@@ -1,7 +1,7 @@
 {
-  "name": "cs-340-activity-1",
+  "name": "cs-340-final-proj",
   "version": "1.0.0",
-  "description": "Activity 1 for OSU CS 340 - Introduction to Databases",
+  "description": "Max and Adam final proj for OSU CS 340 - Introduction to Databases - it is based on a stock watching app",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bradenhc-osu/cs-340-activity-1.git"
+    "url": "https://github.com/adamconrad7/stock-tracker"
   },
-  "author": "",
+  "author": "Max and Adam",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bradenhc-osu/cs-340-activity-1/issues"
+    "url": "https://github.com/adamconrad7/stock-tracker"
   },
-  "homepage": "https://github.com/bradenhc-osu/cs-340-activity-1#readme",
+  "homepage": "https://github.com/adamconrad7/stock-tracker/blob/master/README.md",
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
