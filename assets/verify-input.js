@@ -4,28 +4,28 @@
 var pswd;
 
 function checksid(){
-    
+	
 	sid = document.getElementById('sid');
 	
 	var  re = /[0-9]/;
-    if( ! re.test(sid.value)) {
+	if( ! re.test(sid.value)) {
 		alert("Password must contain at least one digit");
 		return false;
-    }
+	}
 	re = /[A-Z]/;
-    if( ! re.test(pswd1.value)) {
+	if( ! re.test(pswd1.value)) {
 		alert("Password must contain at least one uppercase letter");
 		return false;
-    }	
+	}	
 	re = /[a-z]/;
-    if( ! re.test(pswd1.value)) {
+	if( ! re.test(pswd1.value)) {
 		alert("Password must contain at least one lowercase letter");
 		return false;
-    }
+	}
 	if( pswd1.value.length < 6) {
 		alert("Password must have at least 6 characters");
 		return false;
-    }	
+	}	
 	if (pswd1.value == pswd2.value) {
 		alert("Good Passwords");
 		return true;
@@ -37,20 +37,20 @@ function checksid(){
 }
 
 function isBlank(inputField){
-    if(inputField.type=="checkbox"){
+	if(inputField.type=="checkbox"){
 		if(inputField.checked)
 			return false;
 		return true;
-    }
-    if (inputField.value==""){
+	}
+	if (inputField.value==""){
 		return true;
-    }
-    return false;
+	}
+	return false;
 }
 
 //function to highlight an error through colour by adding css attributes tot he div passed in
 function makeRed(inputDiv){
-   	inputDiv.style.backgroundColor="#AA0000";
+	inputDiv.style.backgroundColor="#AA0000";
 	//inputDiv.parentNode.style.backgroundColor="#AA0000";
 	inputDiv.parentNode.style.color="#FFFFFF";		
 }
@@ -63,18 +63,18 @@ function makeClean(inputDiv){
 
 //the main function must occur after the page is loaded, hence being inside the wondow.onload event handler.
 window.onload = function(){
-    var myForm = document.getElementById("addForm");
+	var myForm = document.getElementById("addForm");
 
-    //all inputs with the class required are looped through 
-    var requiredInputs = document.querySelectorAll(".required");
-    for (var i=0; i < requiredInputs.length; i++){
+	//all inputs with the class required are looped through 
+	var requiredInputs = document.querySelectorAll(".required");
+	for (var i=0; i < requiredInputs.length; i++){
 		requiredInputs[i].onfocus = function(){
 			this.style.backgroundColor = "#EEEE00";
 		}
-    }
+	}
 
-    //on submitting the form, "empty" checks are performed on required inputs.
-    myForm.onsubmit = function(e){
+	//on submitting the form, "empty" checks are performed on required inputs.
+	myForm.onsubmit = function(e){
 		var requiredInputs = document.querySelectorAll(".required");
 		for (var i=0; i < requiredInputs.length; i++){
 			if( isBlank(requiredInputs[i]) ){
