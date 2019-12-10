@@ -23,7 +23,7 @@ router.get('/stocks', (req, res, next) => {
 });
 
 router.get('/stocks/growing', (req, res, next) => {
-//  var ticker = document.getElementById('ticker');
+//
 
     req.db.query('SELECT * FROM Stock WHERE pctChange > 0', (err, results) => {
         // console.log("resultst are: " , results[0].ticker);
@@ -38,8 +38,12 @@ router.get('/stocks/growing', (req, res, next) => {
     });
 });
 //
-router.post('/stocks', (req, res, next) => {
- console.log(req);
+router.post('/stocks/add', (req, res, next) => {
+
+  var id = req.body.Watch
+  console.log(id);
+  //res.redirect('/stocks');
+
 });
 
 

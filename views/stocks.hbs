@@ -20,12 +20,13 @@
         {{#if rows.length }}
             {{#each rows }}
                 <tr>
-                    <!-- <td>{{this.sid}}</td>
-                    <td>{{this.sname}}</td>
-                    <td>{{this.city}}</td> -->
 
-                    <td>{{this.name}} <button type="button">Watch</button> </td>
-                    <td>{{this.ticker}} <id = "ticker">  </td>
+                    <td>{{this.name}}
+                      <form action="stocks/add" method="post" >
+                        <button type="submit" name="Watch" value="{{this.ticker}}">Watch</button>
+                      </form>
+                    </td>
+                    <td>{{this.ticker}} </td>
                     <td>{{this.openPrice}}</td>
                     <td>{{this.closePrice}}</td>
                     <td>{{this.currentPrice}}</td>
@@ -38,8 +39,10 @@
 
             {{/each}}
 
+
         {{else}}
             <tr><td colspan="3"><p class='lead'><em>No records were found.</em></p></td></tr>
         {{/if}}
     </tbody>
+
 </table>

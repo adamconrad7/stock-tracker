@@ -74,6 +74,8 @@ app.use((err, req, res, next) => {
     res.render('500', createViewContext());
 });
 
+// var ticker = document.getElementById('ticker');
+// console.log(ticker);
 // Start our server
 app.listen(PORT, () => {
     console.log('Server is listening on port ' + PORT);
