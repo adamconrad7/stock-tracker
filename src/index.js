@@ -3,8 +3,10 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const { createViewContext } = require('./utils');
-const suppliersRouter = require('./routes/suppliers');
+const stocksRouter = require('./routes/stocks');
 const partsRouter = require('./routes/parts');
+const userRouter = require('./routes/user');
+
 const catalogRouter = require('./routes/catalog');
 
 const config = require('./config');
@@ -51,9 +53,10 @@ app.use((req, res, next) => {
 
 // Add our routes
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(suppliersRouter);
+app.use(stocksRouter);
 app.use(partsRouter);
 app.use(catalogRouter);
+app.use(userRouter);
 
 // Add a handler to render a 404 view
 app.use('*', (req, res) => {
@@ -71,6 +74,8 @@ app.use((err, req, res, next) => {
     res.render('500', createViewContext());
 });
 
+// var ticker = document.getElementById('ticker');
+// console.log(ticker);
 // Start our server
 app.listen(PORT, () => {
     console.log('Server is listening on port ' + PORT + '. Press Ctrl + C to terminate');

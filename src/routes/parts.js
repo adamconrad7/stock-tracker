@@ -6,27 +6,58 @@ const router = express.Router();
 /**
  * Route for listing part suppliers.
  */
+// router.get('/parts', (req, res, next) => {
+//     // TODO: implement the selection query
+//     req.db.query(
+//         `
+//         SELECT p.pname, p.color, s.sname, s.city, c.price
+//         FROM Catalog c, Parts p, Suppliers s
+//         WHERE c.sid = s.sid AND c.pid = p.pid
+//         ORDER BY p.pname, c.price, s.sname
+//         `,
+//         (err, results) => {
+//             if (err) return next(err);
+//             res.render(
+//                 'parts',
+//                 createViewContext({
+//                     pageName: 'List Parts',
+//                     rows: []
+//                 })
+//             );
+//         }
+//     );
+//
+// });
 router.get('/parts', (req, res, next) => {
     // TODO: implement the selection query
     req.db.query(
         `
-        SELECT p.pname, p.color, s.sname, s.city, c.price
-        FROM Catalog c, Parts p, Suppliers s
-        WHERE c.sid = s.sid AND c.pid = p.pid
-        ORDER BY p.pname, c.price, s.sname
+        SELECT St.ticker, St.sectorID FROM Sector Se, Stock St WHERE Se.sectorID = St.SectorID AND Se.sectorCap > 5000000000
         `,
         (err, results) => {
             if (err) return next(err);
             res.render(
                 'parts',
                 createViewContext({
-                    pageName: 'List Parts',
-                    rows: []
+                    pageName: 'Stocks in a sector worth more than $5 billion',
+                    rows: results
                 })
             );
         }
     );
+});
 
+router.get('/suppliers', (req, res, next) => {
+    req.db.query('SELECT * FROM Stock', (err, results) => {
+        if (err) return next(err);
+        res.render(
+            'suppliers',
+            createViewContext({
+                pageName: 'All Stocks',
+                rows: results
+            })
+        );
+    });
 });
 
 /**

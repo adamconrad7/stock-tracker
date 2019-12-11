@@ -4,7 +4,7 @@
   "description": "Max and Adam final proj for OSU CS 340 - Introduction to Databases - it is based on a stock watching app",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "nodemon src/index.js",
     "debug": "node --inspect src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,6 +23,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "forever": "^1.0.0",
-    "mysql": "^2.17.1"
+    "mysql": "^2.17.1",
+    "nodemon": "^2.0.1"
   }
 }

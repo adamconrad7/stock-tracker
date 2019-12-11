@@ -1,0 +1,48 @@
+<h1>{{pageName}}</h1>
+<table id="t01" border="1">
+    <thead>
+        <tr>
+            <!-- <th>ID</th>
+            <th>Name</th>
+            <th>City</th> -->
+            <th>Name</th>
+            <th>Ticker</th>
+            <th>Open</th>
+            <th>Close</th>
+            <th>Current</th>
+            <th>Change</th>
+            <th>MarketID</th>
+            <th>SectorID</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#if rows.length }}
+            {{#each rows }}
+                <tr>
+
+                    <td>{{this.name}}
+                      <form action="stocks/add" method="post" >
+                        <button type="submit" name="Watch" value="{{this.ticker}}">Watch</button>
+                      </form>
+                    </td>
+                    <td>{{this.ticker}} </td>
+                    <td>{{this.openPrice}}</td>
+                    <td>{{this.closePrice}}</td>
+                    <td>{{this.currentPrice}}</td>
+                    <td>{{this.pctChange}}</td>
+                    <td>{{this.sectorID}}</td>
+                    <td>{{this.marketID}}</td>
+                    <!-- <td>{{this.iexID}}</td> -->
+                    <td>{{this.type}} </td>
+                </tr>
+
+            {{/each}}
+
+
+        {{else}}
+            <tr><td colspan="3"><p class='lead'><em>No records were found.</em></p></td></tr>
+        {{/if}}
+    </tbody>
+
+</table>
