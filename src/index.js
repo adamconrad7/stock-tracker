@@ -78,5 +78,5 @@ app.use((err, req, res, next) => {
 // console.log(ticker);
 // Start our server
 app.listen(PORT, () => {
-    console.log('Server is listening on port ' + PORT);
+    console.log('Server is listening on port ' + PORT + '. Press Ctrl + C to terminate');
 });
