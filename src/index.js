@@ -5,8 +5,9 @@ const mysql = require('mysql');
 const { createViewContext } = require('./utils');
 const stocksRouter = require('./routes/stocks');
 const partsRouter = require('./routes/parts');
-const userRouter = require('./routes/user');
-//const watchRouter = require('./routes/add');
+const registerUserRouter = require('./routes/registerUser');
+var loginUserRouter = require('./routes/loginUser');
+const userRouter = require('./routes/user');  // fix?
 const catalogRouter = require('./routes/catalog');
 
 const config = require('./config');
@@ -46,10 +47,15 @@ app.use((req, res, next) => {
         multipleStatements: true
 
     });
-    conn.connect((err) => {
-        if (err) return next(err);
-        req.db = conn;
-        next();
+    conn.connect(function(err)  {
+        if (err) {
+            console.log("Error connecting to database.");
+            return next(err);
+        } else {
+            console.log("Connected to db.");
+            req.db = conn;
+            next();
+        }
     });
 });
 
@@ -58,7 +64,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(stocksRouter);
 app.use(partsRouter);
 app.use(catalogRouter);
-app.use(userRouter);
+app.use(registerUserRouter);
+app.use(loginUserRouter);
 
 // Add a handler to render a 404 view
 app.use('*', (req, res) => {

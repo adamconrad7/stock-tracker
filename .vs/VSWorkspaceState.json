@@ -9,6 +9,6 @@
     "\\views\\layouts",
     "\\views\\partials"
   ],
-  "SelectedNode": "\\assets\\verify-input.js",
+  "SelectedNode": "\\src\\routes\\loginUser.js",
   "PreviewInSolutionExplorer": false
 }

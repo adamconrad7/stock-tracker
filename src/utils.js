@@ -20,8 +20,10 @@ module.exports = {
                     { location: '/stocks', page: 'All Stocks' },
                     { location: '/stocks/growing', page: 'Growing Stocks' },
                     { location: '/parts', page: 'Large Sector Stocks' },
-                    { location: '/watchlist', page: 'Your Stocks' },
-                    { location: '/login', page: 'Add user' }
+                    { location: '/parts/add', page: 'Add Part' },
+                    { location: '/user/add', page: 'Register user' },
+                    { location: '/user/login', page: 'Login' },
+                    { location: '/watchlist', page: 'Your Stocks' }
                 ]
             },
             obj
