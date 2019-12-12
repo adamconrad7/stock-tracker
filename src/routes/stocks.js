@@ -86,12 +86,12 @@ router.get('/stocks/large', (req, res, next) => {
 //  // TODO: implement the selection query
   req.db.query(
       `
-      SELECT St.ticker, St.sectorID FROM Sector Se, Stock St WHERE Se.sectorID = St.SectorID AND Se.sectorCap > 200
+      SELECT * FROM Sector Se, Stock St WHERE Se.sectorID = St.SectorID AND Se.sectorCap > 200
       `,
       (err, results) => {
           if (err) return next(err);
           res.render(
-              'parts',
+              'stocks',
               createViewContext({
                   pageName: 'Stocks in a sector worth more than $200',
                   rows: results
@@ -105,7 +105,8 @@ router.get('/stocks/large', (req, res, next) => {
 router.get('/watchlist', (req, res, next) => {
   req.db.query( 'SELECT * FROM `Stock` S, `Watches` W, `User` U WHERE S.ticker = W.ticker AND W.userID = U.userID AND U.current = 1' , (err, results) => {
     if (err) return next(err);
-  //  console.log(results);    res.render(
+  //  console.log(results);
+    res.render(
         'watchlist',
         createViewContext({
             pageName: 'Your Stocks',
