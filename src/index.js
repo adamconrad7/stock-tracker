@@ -55,6 +55,8 @@ app.use((req, res, next) => {
     });
 });
 
+
+
 // Add our routes
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(stocksRouter);
