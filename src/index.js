@@ -4,13 +4,10 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const { createViewContext } = require('./utils');
 const stocksRouter = require('./routes/stocks');
-const partsRouter = require('./routes/parts');
 const registerUserRouter = require('./routes/registerUser');
 var loginUserRouter = require('./routes/loginUser');
-const userRouter = require('./routes/user');  // fix?
-const catalogRouter = require('./routes/catalog');
-
 const config = require('./config');
+const router = express.Router();
 
 const PORT = process.env.PORT || 3000;
 
@@ -51,8 +48,7 @@ app.use((req, res, next) => {
         if (err) {
             console.log("Error connecting to database.");
             return next(err);
-        } else {
-            console.log("Connected to db.");
+        } else {          
             req.db = conn;
             next();
         }
@@ -62,8 +58,6 @@ app.use((req, res, next) => {
 // Add our routes
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(stocksRouter);
-app.use(partsRouter);
-app.use(catalogRouter);
 app.use(registerUserRouter);
 app.use(loginUserRouter);
 

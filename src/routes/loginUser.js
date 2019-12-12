@@ -41,10 +41,6 @@ router.post('/', (req, res, next) => {
                 message: 'there are some errors with query'
             })
         } else {
-            //var localPassword = cryptr.encrypt(req.body.uPass);
-            //key = results[0].key1;
-            //iv = results[0].iv;
-            //var localPassword = encrypt(req.body.uPass);
 
             if (results.length) {
 

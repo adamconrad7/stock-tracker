@@ -105,8 +105,7 @@ router.get('/stocks/large', (req, res, next) => {
 router.get('/watchlist', (req, res, next) => {
   req.db.query( 'SELECT * FROM `Stock` S, `Watches` W, `User` U WHERE S.ticker = W.ticker AND W.userID = U.userID AND U.current = 1' , (err, results) => {
     if (err) return next(err);
-  //  console.log(results);
-    res.render(
+  //  console.log(results);    res.render(
         'watchlist',
         createViewContext({
             pageName: 'Your Stocks',
