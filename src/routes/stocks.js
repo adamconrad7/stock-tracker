@@ -41,7 +41,7 @@ router.post('/stocks', (req, res, next) => {
       //    context.message = `Can't add stock ${req.body.Watch} because it already exists`;
           res.redirect('/stocks');
       } else {
-        console.log(datetime);
+
           req.db.query(
             'INSERT INTO Watches (userID, ticker, date) SELECT UserID, ?, ? FROM User WHERE current = 1',
             [req.body.Watch, datetime],
@@ -105,7 +105,7 @@ router.get('/stocks/large', (req, res, next) => {
 router.get('/watchlist', (req, res, next) => {
   req.db.query( 'SELECT * FROM `Stock` S, `Watches` W, `User` U WHERE S.ticker = W.ticker AND W.userID = U.userID AND U.current = 1' , (err, results) => {
     if (err) return next(err);
-    console.log(results);
+  //  console.log(results);
     res.render(
         'watchlist',
         createViewContext({

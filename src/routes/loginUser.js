@@ -20,7 +20,7 @@ const bcrypt = require('bcryptjs');
 const router = express.Router();
 var connection = require('./../config');
 
-router.get('/user/login', (req, res) => {
+router.get('/', (req, res) => {
     // console.log("gpt request");
     res.render('user-login', createViewContext({ message: 'Login' }));
 });
@@ -29,9 +29,9 @@ router.get('/user/login', (req, res) => {
   * Logic for actually adding a new part supplier using data from a form submission.
   */
 
-router.post('/user/login', (req, res, next) => {
+router.post('/', (req, res, next) => {
     let context = createViewContext();
-
+    console.log("got a post");
     // Make sure user exists and password matches
     req.db.query('SELECT * FROM User WHERE UserID = ?', [req.body.uName], (err, results) => {
 
@@ -62,7 +62,7 @@ router.post('/user/login', (req, res, next) => {
                             [req.body.uName, req.body.uName],
                             err => {
                                 if (err) return next(err);
-                                
+
                             }
                         );
                         context.message = "Passwords match, logged in.";
