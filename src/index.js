@@ -6,7 +6,7 @@ const { createViewContext } = require('./utils');
 const stocksRouter = require('./routes/stocks');
 const partsRouter = require('./routes/parts');
 const userRouter = require('./routes/user');
-
+//const watchRouter = require('./routes/add');
 const catalogRouter = require('./routes/catalog');
 
 const config = require('./config');
@@ -42,7 +42,9 @@ app.use((req, res, next) => {
         host: config.host,
         user: config.user,
         password: config.password,
-        database: config.dbname
+        database: config.dbname,
+        multipleStatements: true
+
     });
     conn.connect((err) => {
         if (err) return next(err);

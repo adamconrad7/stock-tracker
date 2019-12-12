@@ -12,5 +12,6 @@ module.exports = {
     user: 'cs340_conraada',
     password: '3862',
     dbname: 'cs340_conraada',
-    onid: 'conraada'
+    onid: 'conraada',
+    multipleStatements: true
 };
