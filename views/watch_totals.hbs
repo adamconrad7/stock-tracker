@@ -1,0 +1,32 @@
+<h1>{{pageName}}</h1>
+<table id="t01" border="1">
+    <thead>
+        <tr>
+            <!-- <th>ID</th>
+            <th>Name</th>
+            <th>City</th> -->
+            <th>Average Price</th>
+            <th>Average Change</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#if rows.length }}
+            {{#each rows }}
+                <tr>
+
+                    <td>{{this.avgPrice}} </td>
+                    <td>{{this.avgChange}} </td>
+                    <td>{{this.total}}</td>
+
+                </tr>
+
+            {{/each}}
+
+
+        {{else}}
+            <tr><td colspan="3"><p class='lead'><em>No records were found.</em></p></td></tr>
+        {{/if}}
+    </tbody>
+
+</table>

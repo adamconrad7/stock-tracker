@@ -15,15 +15,16 @@ module.exports = {
             {
                 username: config.onid,
                 menuitems: [
-                    { location: '/catalog', page: 'View Catalog' },
+                  //  { location: '/catalog', page: 'View Catalog' },
                     // { location: '/suppliers', page: 'List Suppliers' },
                     { location: '/stocks', page: 'All Stocks' },
                     { location: '/stocks/growing', page: 'Growing Stocks' },
-                    { location: '/parts', page: 'Large Sector Stocks' },
-                    { location: '/parts/add', page: 'Add Part' },
+                    { location: '/stocks/large', page: 'Large Sector Stocks' },
+                    //{ location: '/parts/add', page: 'Add Part' },
                     { location: '/user/add', page: 'Register user' },
                     { location: '/user/login', page: 'Login' },
-                    { location: '/watchlist', page: 'Your Stocks' }
+                    { location: '/watchlist', page: 'Your Stocks' },
+                    { location: '/watchlist/totals', page: 'Totals' }
                 ]
             },
             obj

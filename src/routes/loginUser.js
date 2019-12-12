@@ -34,7 +34,7 @@ router.post('/user/login', (req, res, next) => {
 
     // Make sure user exists and password matches
     req.db.query('SELECT * FROM User WHERE UserID = ?', [req.body.uName], (err, results) => {
-        
+
         if (err) {
             res.json({
                 status: false,
@@ -57,6 +57,14 @@ router.post('/user/login', (req, res, next) => {
                         res.render('user-login', context);
                     } else {
                         console.log("Password matches!")
+                        req.db.query(
+                            ' UPDATE User SET current = 1 WHERE UserID = ?; UPDATE User SET current = 0 WHERE UserID != ?',
+                            [req.body.uName, req.body.uName],
+                            err => {
+                                if (err) return next(err);
+                                
+                            }
+                        );
                         context.message = "Passwords match, logged in.";
                         res.render('user-login', context);
                     }
