@@ -1,11 +1,4 @@
 const config = require('./config');
-const express = require('express');
-const router = express.Router();
-var username = "Please Log in"
-
-///**
-// * Route for listing part suppliers.
-// */
 
 module.exports = {
     /**
@@ -20,7 +13,7 @@ module.exports = {
     createViewContext: obj =>
         Object.assign(
             {
-                username: username,
+
                 menuitems: [
                     { location: '/user/add', page: 'Register user' },
                     { location: '/', page: 'Login' },

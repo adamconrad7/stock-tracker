@@ -4,18 +4,7 @@ const Cryptr = require('cryptr');
 cryptr = new Cryptr('secretKey');
 const bcrypt = require('bcryptjs');
 
-//// Nodejs encryption with CTR
-//const crypto = require('crypto');
-//const algorithm = 'aes-256-cbc';
-//var key = crypto.randomBytes(32);
-//var iv = crypto.randomBytes(16);
 
-//function encrypt(text) {
-//    let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
-//    let encrypted = cipher.update(text);
-//    encrypted = Buffer.concat([encrypted, cipher.final()]);
-//    return encrypted.toString('hex')
-//}
 
 const router = express.Router();
 var connection = require('./../config');
@@ -84,10 +73,9 @@ router.post('/', (req, res, next) => {
                 //}
             }
             else {
-                res.json({
-                    status: false,
-                    message: "Username does not exits"
-                });
+                console.log("Username does not exist")
+                context.message = "Username does not exist, please try again or Register";
+                res.render('user-login', context);
             }
         }
     });
