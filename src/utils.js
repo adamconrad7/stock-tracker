@@ -20,7 +20,7 @@ module.exports = {
                     { location: '/stocks', page: 'All Stocks' },
                     { location: '/stocks/growing', page: 'Growing Stocks' },
                     { location: '/parts', page: 'Large Sector Stocks' },
-                    { location: '/parts/add', page: 'Add Part' },
+                    { location: '/watchlist', page: 'Your Stocks' },
                     { location: '/login', page: 'Add user' }
                 ]
             },

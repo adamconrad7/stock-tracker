@@ -34,7 +34,10 @@ router.get('/login', (req, res) => {
 //
 router.post('/login', (req, res, next) => {
     let context = createViewContext();
-
+    var queries = [
+      'INSERT INTO User (UserID, Password, lName, fName, current) VALUES (?,?,?,?,1)',
+      'UPDATE User SET current = 0 WHERE UserID != req.body.uName'
+    ]
     // Make sure a supplier with the provided SID doesn't already exist
     req.db.query('SELECT * FROM User WHERE UserID = ?', [req.body.uName], (err, results) => {
         if (err) return next(err);
@@ -46,9 +49,11 @@ router.post('/login', (req, res, next) => {
         } else {
             // Doesn't exist, create it
             console.log(req.body.uName, req.body.uPass);
+
+
             req.db.query(
-                'INSERT INTO User (UserID, Password, lName, fName) VALUES (?,?,?,?)',
-                [req.body.uName, req.body.uPass, req.body.lName, req.body.fName],
+                'INSERT INTO User (UserID, Password, lName, fName, current) VALUES (?,?,?,?,1); UPDATE User SET current = 0 WHERE UserID != ?',
+                [req.body.uName, req.body.uPass, req.body.lName, req.body.fName, req.body.uName, req.body.uName],
                 err => {
                     if (err) return next(err);
                     console.log("No error");
@@ -56,6 +61,8 @@ router.post('/login', (req, res, next) => {
                     res.render('add-user', context);
                 }
             );
+          //  req.db.query('UPDATE User SET current = 0 WHERE UserID != req.body.uName');
+
         }
     });
 });
