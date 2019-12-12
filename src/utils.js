@@ -1,30 +1,4 @@
 const config = require('./config');
-const express = require('express');
-const router = express.Router();
-var username = "Please Log in"
-
-///**
-// * Route for listing part suppliers.
-// */
-router.get('/', (req, res, next) => {
-    //  var ticker = document.getElementById('ticker');
-
-    req.db.query('SELECT UserID FROM User WHERE current = 1', (err, results) => {
-        if (err) return next(err);
-
-        if (results.length) {
-            console.log(results[0].UserID)
-            username = results[0].UserID
-        }
-        res.render(
-            'stocks',
-            createViewContext({
-                pageName: 'All Stocks',
-                rows: results
-            })          
-        );
-    });
-});
 
 module.exports = {
     /**
@@ -39,7 +13,7 @@ module.exports = {
     createViewContext: obj =>
         Object.assign(
             {
-                username: username,
+                
                 menuitems: [
                     { location: '/user/add', page: 'Register user' },
                     { location: '/user/login', page: 'Login' },
