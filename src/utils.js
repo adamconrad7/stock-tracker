@@ -21,7 +21,8 @@ module.exports = {
                     { location: '/stocks/growing', page: 'Growing Stocks' },
                     { location: '/parts', page: 'Large Sector Stocks' },
                     { location: '/parts/add', page: 'Add Part' },
-                    { location: '/login', page: 'Add user' }
+                    { location: '/user/add', page: 'Register user' },
+                    { location: '/user/login', page: 'Login' },
                 ]
             },
             obj
