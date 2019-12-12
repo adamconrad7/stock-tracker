@@ -21,7 +21,6 @@ const router = express.Router();
 var connection = require('./../config');
 
 router.get('/user/login', (req, res) => {
-    // console.log("gpt request");
     res.render('user-login', createViewContext({ message: 'Login' }));
 });
 
@@ -41,10 +40,6 @@ router.post('/user/login', (req, res, next) => {
                 message: 'there are some errors with query'
             })
         } else {
-            //var localPassword = cryptr.encrypt(req.body.uPass);
-            //key = results[0].key1;
-            //iv = results[0].iv;
-            //var localPassword = encrypt(req.body.uPass);
 
             if (results.length) {
 

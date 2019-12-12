@@ -12,7 +12,6 @@ router.get('/stocks', (req, res, next) => {
 //  var ticker = document.getElementById('ticker');
 
     req.db.query('SELECT * FROM Stock', (err, results) => {
-        // console.log("resultst are: " , results[0].ticker);
         if (err) return next(err);
         res.render(
             'stocks',
@@ -41,16 +40,13 @@ router.post('/stocks', (req, res, next) => {
       //    context.message = `Can't add stock ${req.body.Watch} because it already exists`;
           res.redirect('/stocks');
       } else {
-        console.log(datetime);
           req.db.query(
             'INSERT INTO Watches (userID, ticker, date) SELECT UserID, ?, ? FROM User WHERE current = 1',
             [req.body.Watch, datetime],
               err => {
                 if (err) return next(err);
-              //  console.log(UserID);
                 context.message = 'Stock added successfully';
                 res.redirect('/stocks');
-                // res.render('stocks', context);
 
               }
           );
@@ -69,7 +65,6 @@ router.get('/stocks/growing', (req, res, next) => {
      //req.db.query('SELECT * FROM Stock WHERE pctChange > 0', (err, results) => {
     //  req.db.query('CREATE VIEW growing AS SELECT * FROM Stock WHERE pctChange > 0; SELECT * FROM growing', (err, results) => {
       req.db.query('SELECT * FROM grow', (err, results) => {
-        // console.log("resultst are: " , results[0].ticker);
         if (err) return next(err);
         res.render(
             'stocks',
@@ -105,7 +100,6 @@ router.get('/stocks/large', (req, res, next) => {
 router.get('/watchlist', (req, res, next) => {
   req.db.query( 'SELECT * FROM `Stock` S, `Watches` W, `User` U WHERE S.ticker = W.ticker AND W.userID = U.userID AND U.current = 1' , (err, results) => {
     if (err) return next(err);
-    console.log(results);
     res.render(
         'watchlist',
         createViewContext({
@@ -120,7 +114,6 @@ router.get('/watchlist/totals', (req, res, next) => {
   req.db.query( 'SELECT AVG(s.currentPrice) as avgPrice, AVG(s.pctChange) as avgChange, SUM(s.currentPrice) as total FROM `Watches` w, `Stock` s, `User` u WHERE w.ticker = s.ticker AND w.userID = u.UserID AND u.current = 1'
  , (err, results) => {
     if (err) return next(err);
-    console.log(results);
     res.render(
         'watch_totals',
         createViewContext({
