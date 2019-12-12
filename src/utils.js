@@ -23,6 +23,7 @@ module.exports = {
                     { location: '/parts/add', page: 'Add Part' },
                     { location: '/user/add', page: 'Register user' },
                     { location: '/user/login', page: 'Login' },
+                    { location: '/watchlist', page: 'Your Stocks' }
                 ]
             },
             obj

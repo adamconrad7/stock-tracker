@@ -7,6 +7,7 @@ const stocksRouter = require('./routes/stocks');
 const partsRouter = require('./routes/parts');
 const registerUserRouter = require('./routes/registerUser');
 var loginUserRouter = require('./routes/loginUser');
+const userRouter = require('./routes/user');  // fix?
 const catalogRouter = require('./routes/catalog');
 
 const config = require('./config');
@@ -42,7 +43,9 @@ app.use((req, res, next) => {
         host: config.host,
         user: config.user,
         password: config.password,
-        database: config.dbname
+        database: config.dbname,
+        multipleStatements: true
+
     });
     conn.connect(function(err)  {
         if (err) {
